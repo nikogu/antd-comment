@@ -54,7 +54,8 @@
     "build": "npm run build:lib && npm run build:umd",
     "build:lib": "./node_modules/.bin/babel src -d lib --copy-files",
     "build:umd": "./node_modules/.bin/webpack ./src/index.js dist/index.js --config ./webpack.component.js",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "lint": "eslint ./ --ext '.js,.jsx'"
   },
   "files": [
     "lib",
