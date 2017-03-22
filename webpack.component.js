@@ -1,3 +1,5 @@
+// your module webpack config
+
 const path = require('path');
 const autoprefixer = require('autoprefixer');
 
