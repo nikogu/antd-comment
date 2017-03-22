@@ -11,7 +11,12 @@ Easy way to write a react component.
 
 ## How to use
 
-`git clone https://github.com/flutejs/react-component-example.git`
+1. `git clone https://github.com/flutejs/react-component-example.git`
+2. modify package.json
+3. coding
+4. publish to npm
+
+### Command
 
 `npm start`: Start server to debug your code.
 
