@@ -1,0 +1,11 @@
+app
+tests
+config
+node_modules/
+spm_modules/
+test/fixtures
+fntest/
+dist/
+coverage/
+mocks/
+.react_entries/
