@@ -1,0 +1,36 @@
+@import '../util.less';
+@import './markdown.less';
+
+.antsay-commentbox-textarea {
+  .antsay-commentbox-input {
+    font-size: @font-normal-size;
+    height: 34px;
+  }
+  .antsay-commentbox-input-active {
+    font-size: @font-normal-size;
+    height: auto;
+    min-height: 126px;
+  }
+
+  .antsay-commentbox-preview {
+    font-size: @font-normal-size;
+    min-height: 126px;
+  }
+
+  .antsay-commentbox-operator {
+    padding-top: 16px;
+    .antsay-commentbox-submit {
+      & > span {
+        cursor: pointer;
+        color: @color-gray;
+        font-size: @font-normal-size;
+        margin-left: 8px;
+        padding: 5px 16px 6px 16px;
+        position: relative;
+        top: 1px;
+      }
+    }
+    .antsay-commentbox-tips {
+    }
+  }
+}

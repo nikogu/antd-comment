@@ -1,0 +1,64 @@
+@import '../util.less';
+
+.antsay-comment {
+  position: relative;
+  padding: 16px 16px 36px 16px;
+
+  .antsay-comment-author {
+    position: absolute;
+    top: 20px;
+    left: 16px;
+    img {
+      border-radius: 18px;
+      width: 36px;
+      height: 36px;
+    }
+  }
+  .antsay-comment-body {
+    margin-left: 60px;
+    .antsay-comment-meta {
+      cursor: pointer;
+      height: 20px;
+      p, span {
+        color: @color-gray;
+        display: inline-block;
+        font-size: @font-normal-size;
+      }
+      p span {
+        margin-right: 4px;
+      }
+    }
+    .antsay-comment-meta-time {
+      margin-left: 12px;
+    }
+    .antsay-comment-content {
+      padding: 4px 0;
+      min-height: 32px;
+    }
+  }
+  .antsay-comment-operator {
+    display: none;
+    line-height: 20px;
+    height: 20px;
+    position: absolute;
+    left: 76px;
+    bottom: 16px;
+    span {
+      color: @color-gray;
+      cursor: pointer;
+      font-size: @font-normal-size;
+      margin-right: 16px;
+      i {
+        padding-right: 4px;
+      }
+      &:hover {
+        color: @color-gray-dark;
+      }
+    }
+  }
+  &:hover {
+    .antsay-comment-operator {
+      display: block;
+    }
+  }
+}
