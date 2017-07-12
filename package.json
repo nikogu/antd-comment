@@ -1,6 +1,6 @@
 {
-  "name": "react-component-example",
-  "version": "0.0.1",
+  "name": "antsay-ui",
+  "version": "0.1.0",
   "description": "",
   "author": "",
   "main": "lib/index.js",
@@ -53,7 +53,7 @@
     "start": "dora --plugins \"proxy,webpack\"",
     "build": "npm run build:lib && npm run build:umd",
     "build:lib": "./node_modules/.bin/babel src -d lib --copy-files",
-    "build:umd": "./node_modules/.bin/webpack ./src/index.js dist/index.js --config ./webpack.component.js",
+    "build:umd": "./node_modules/.bin/webpack ./src/index.jsx dist/index.js --config ./webpack.component.js",
     "prepublish": "npm run build",
     "lint": "eslint ./ --ext '.js,.jsx'"
   },
