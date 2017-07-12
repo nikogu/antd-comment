@@ -56,6 +56,13 @@ class AntSay extends Component {
         }
       </div>
 
+      {
+        data.more &&
+        <div className="antsay-more">
+          查看更多评论
+        </div>
+      }
+
     </div>
   }
 }

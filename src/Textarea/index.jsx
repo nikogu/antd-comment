@@ -42,6 +42,17 @@ class Textarea extends Component {
     });
   }
 
+  handleOnBlur(e) {
+    const id = this.props.id;
+    const value = e.target.value;
+    if (!value) {
+      document.getElementById(`antsay-commentbox-${id}`).style.height = 'auto';
+      this.setState({
+        active: false,
+      });
+    }
+  }
+
   handleOnSubmit() {
     const { onSubmit } = this.props;
     onSubmit && onSubmit(this.state.value);
@@ -80,6 +91,7 @@ class Textarea extends Component {
         value={value}
         onChange={(e)=>this.handleOnChange(e)}
         onFocus={()=>this.handleOnFocus()}
+        onBlur={(e)=>this.handleOnBlur(e)}
       />
       {
         active && <div className="antsay-commentbox-operator">

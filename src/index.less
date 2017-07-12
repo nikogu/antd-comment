@@ -1,5 +1,21 @@
+@import "./util.less";
+
 .antsay-ui {
   .antsay-commentbox-wrapper {
     margin-bottom: 40px;
+  }
+  .antsay-more {
+    border-radius: 4px;
+    color: @color-gray;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    padding: 6px 0 5px;
+    position: relative;
+    text-align: center;
+    &:hover {
+      background-color: rgba(0,0,0,.03);
+      color: @color-gray-dark;
+    }
   }
 }
