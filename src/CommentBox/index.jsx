@@ -13,15 +13,13 @@ class CommentBox extends Component {
     this.state = {};
   }
 
-  handleOnSubmit() {
+  handleOnSubmit(val) {
     const { onSubmit } = this.props;
-    onSubmit && onSubmit(this.state.value);
+    onSubmit && onSubmit(val);
   }
 
   render() {
     const { data, disableSubmit, id } = this.props;
-
-    const { pagination={}, currentUser={} } = data;
 
     return <div className="antsay-commentbox">
       <div className="antsay-commentbox-header">
@@ -38,6 +36,7 @@ class CommentBox extends Component {
         <div className="antsay-commentbox-input-wrapper">
           <Textarea
             id={id}
+            placeholder={(data.pagination && data.pagination.total === 0) && '添加第一条评论'}
             disableSubmit={disableSubmit}
             onSubmit={(val)=>this.handleOnSubmit(val)}
           />
@@ -47,6 +46,11 @@ class CommentBox extends Component {
   }
 }
 
-CommentBox.propTypes = {};
+CommentBox.propTypes = {
+  id: PropTypes.any,
+  disableSubmit: PropTypes.any,
+  data: PropTypes.object,
+  onSubmit: PropTypes.func,
+};
 
 export default CommentBox;

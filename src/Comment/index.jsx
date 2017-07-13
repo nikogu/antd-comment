@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import { Input, Button, Tooltip, Icon } from 'antd';
+import { Input, Button, Tooltip, Icon, Popconfirm } from 'antd';
 
 import moment from 'moment';
 
@@ -13,11 +13,47 @@ class Comment extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      showOperator: false,
+      expandReply: false,
+      disableSubmit: false,
+    };
+  }
+
+  handleDelete() {
+    const { data, onDelete } = this.props;
+    onDelete && onDelete(data);
+  }
+
+  handleOnClickDelete() {
+    this.setState({
+      showOperator: true,
+    });
+  }
+
+  handleOnCancelDelete() {
+    this.setState({
+      showOperator: false,
+    });
+  }
+
+  handleOnSubmit(val) {
+    console.log(val);
+  }
+
+  showReplyBox() {
+    this.setState({
+      expandReply: !this.state.expandReply,
+    });
   }
 
   render() {
-    const { data } = this.props;
+    const { showOperator, expandReply, disableSubmit } = this.state;
+    const { data, currentUser } = this.props;
+    let auth = data.auth;
+    if (auth === undefined) {
+      auth = (data.author.name === currentUser.name);
+    }
 
     return <div className="antsay-comment">
       <div className="antsay-comment-author">
@@ -54,20 +90,41 @@ class Comment extends Component {
           dangerouslySetInnerHTML={{__html: markdown(data.body || '')}}
         />
       </div>
-      <div className="antsay-comment-operator">
-        <span>
+      <div className="antsay-comment-operator-wrapper">
+        <div className={showOperator ? 'antsay-comment-operator-show': 'antsay-comment-operator'}>
+        <span onClick={()=>this.showReplyBox()}>
           <Icon type="rollback"/>
-          回复
+          { expandReply ? '取消回复' : '回复'}
         </span>
-        <span>
-          <Icon type="delete"/>
-          删除
-        </span>
+          {
+            auth && !expandReply && <Popconfirm
+              title="确定要删除这条评论吗？"
+              onConfirm={()=>this.handleDelete()}
+              onCancel={()=>this.handleOnCancelDelete()}
+            >
+              <span onClick={()=>this.handleOnClickDelete()}>
+                <Icon type="delete"/>删除
+              </span>
+            </Popconfirm>
+          }
+        </div>
+      </div>
+      <div className={expandReply ? 'antsay-comment-reply-show' : 'antsay-comment-reply'}>
+          <Textarea
+            active={true}
+            textSubmit="回复"
+            placeholder={`回复 ${data.author.name} :`}
+            disableSubmit={disableSubmit}
+            onSubmit={(val)=>this.handleOnSubmit(val)}
+          />
       </div>
     </div>
   }
 }
 
-Comment.propTypes = {};
+Comment.propTypes = {
+  data: PropTypes.object,
+  onDelete: PropTypes.func,
+};
 
 export default Comment;

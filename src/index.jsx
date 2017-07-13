@@ -7,7 +7,7 @@ import Comment from './Comment';
 
 import './index.less';
 
-class AntSay extends Component {
+class AntDComment extends Component {
   constructor(props) {
     super(props);
 
@@ -17,20 +17,26 @@ class AntSay extends Component {
     }
   }
 
+  handleDelete(c) {
+    const { onDelete } = this.props;
+    onDelete && onDelete(c);
+  }
+
   handleOnSubmit(val) {
+    const { onComment } = this.props;
+
     this.setState({
       disableSubmit: true,
     });
-    console.log(val);
-    setTimeout(()=> {
+
+    onComment && onComment(val, null, ()=>{
       this.setState({
         disableSubmit: false,
       });
-    }, 2000);
+    });
   }
 
   render() {
-
     const { disableSubmit } = this.state;
 
     const { data } = this.props;
@@ -51,7 +57,12 @@ class AntSay extends Component {
       <div className="antsay-comments">
         {
           data.comments.map((comment, i)=>
-            <Comment key={`comment-${i}`} data={comment} />
+            <Comment
+              currentUser={data.currentUser}
+              key={`comment-${i}`}
+              data={comment}
+              onDelete={(c)=>this.handleDelete(c)}
+            />
           )
         }
       </div>
@@ -67,7 +78,7 @@ class AntSay extends Component {
   }
 }
 
-AntSay.propTypes = {
+AntDComment.propTypes = {
   data: PropTypes.object,
   onComment: PropTypes.func,
   onDeleteComment: PropTypes.func,
@@ -76,4 +87,4 @@ AntSay.propTypes = {
   onGetMore: PropTypes.func,
 };
 
-export default AntSay;
+export default AntDComment;

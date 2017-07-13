@@ -8,15 +8,13 @@ import { markdown } from '../util';
 import './highlight.css';
 import './index.less';
 
-// markdown support code highlight
-
 class Textarea extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       preview: false,
-      active: false,
+      active: props.active || false,
       value: '',
     }
   }
@@ -24,8 +22,10 @@ class Textarea extends Component {
   componentDidMount() {
     const { id } = this.props;
 
-    // autosize
-    autosize(document.getElementById(`antsay-commentbox-${id}`));
+    if (id) {
+      // autosize
+      autosize(document.getElementById(`antsay-commentbox-${id}`));
+    }
 
   }
 
@@ -43,14 +43,25 @@ class Textarea extends Component {
   }
 
   handleOnBlur(e) {
-    const id = this.props.id;
+    const { id, active } = this.props;
     const value = e.target.value;
-    if (!value) {
-      document.getElementById(`antsay-commentbox-${id}`).style.height = 'auto';
-      this.setState({
-        active: false,
-      });
+
+    if (id) {
+      if (!value) {
+        document.getElementById(`antsay-commentbox-${id}`).style.height = 'auto';
+      }
     }
+
+    if (active) return;
+
+    // delay
+    setTimeout(()=> {
+      if (!value) {
+        this.setState({
+          active: false,
+        });
+      }
+    }, 100);
   }
 
   handleOnSubmit() {
@@ -70,7 +81,7 @@ class Textarea extends Component {
   render() {
 
     const { active, value, preview } = this.state;
-    const { disableSubmit, id } = this.props;
+    const { disableSubmit, id, placeholder, textSubmit } = this.props;
 
     const disabled = disableSubmit ? true : (value === '');
 
@@ -82,12 +93,12 @@ class Textarea extends Component {
       />
       <Input
         style={{display: preview ? 'none' : 'block'}}
-        id={`antsay-commentbox-${id}`}
+        id={`antsay-commentbox-${id || Math.random()}`}
         rows="1"
         size="large"
         className={ active ? 'antsay-commentbox-input-active' : 'antsay-commentbox-input'}
         type="textarea"
-        placeholder="添加评论"
+        placeholder={placeholder || "添加评论"}
         value={value}
         onChange={(e)=>this.handleOnChange(e)}
         onFocus={()=>this.handleOnFocus()}
@@ -101,15 +112,17 @@ class Textarea extends Component {
               disabled={disabled}
               onClick={()=>this.handleOnSubmit()}
             >
-              评论
+              { textSubmit || '评论'}
             </Button>
-            <span
-              onClick={()=>this.togglePreview()}
-            >
-              {
-                preview ? '取消' : '预览'
-              }
-            </span>
+            {
+              !disabled && <span
+                onClick={()=>this.togglePreview()}
+              >
+                {
+                  preview ? '取消' : '预览'
+                }
+              </span>
+            }
           </div>
           <div className="antsay-commentbox-tips">
 
@@ -120,6 +133,12 @@ class Textarea extends Component {
   }
 }
 
-Textarea.propTypes = {};
+Textarea.propTypes = {
+  active: PropTypes.any,
+  textSubmit: PropTypes.any,
+  placeholder: PropTypes.any,
+  disableSubmit: PropTypes.any,
+  onSubmit: PropTypes.func,
+};
 
 export default Textarea;
