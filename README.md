@@ -6,6 +6,8 @@ The comment UI component build on ant.design
 
 0.1.0
 
+![1](https://gw.alipayobjects.com/zos/rmsportal/rnUQgvYWUJDxhKrRqrdp.png)
+
 ## feature
 
 - support markdown
@@ -117,3 +119,5 @@ const App = ()=> <div>
 - [ ] support to top
 - [ ] support @
 - [ ] support nested comment format
+
+
