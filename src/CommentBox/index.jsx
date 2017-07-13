@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 
 import { Input, Button } from 'antd';
 
-import Textarea from '../Textarea';
+import Textarea from '../Textarea/index';
 
 import './index.less';
 

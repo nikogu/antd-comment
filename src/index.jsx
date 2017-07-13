@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import shortid from 'shortid';
 
-import CommentBox from './CommentBox';
-import Comment from './Comment';
+import CommentBox from './CommentBox/index';
+import Comment from './Comment/index';
 
 import './index.less';
 
@@ -14,12 +14,12 @@ class AntDComment extends Component {
     this.id = shortid.generate();
     this.state = {
       disableSubmit: false,
-    }
+    };
   }
 
   handleDelete(c) {
     const { onDelete } = this.props;
-    onDelete && onDelete(c);
+    if(onDelete) onDelete(c);
   }
 
   handleOnSubmit(val) {
@@ -29,7 +29,7 @@ class AntDComment extends Component {
       disableSubmit: true,
     });
 
-    onComment && onComment(val, null, ()=>{
+    if(onComment) onComment(val, null, () => {
       this.setState({
         disableSubmit: false,
       });
@@ -43,7 +43,7 @@ class AntDComment extends Component {
 
     return <div className="antsay-ui">
 
-      <div className="antsay-top"></div>
+      <div className="antsay-top"/>
 
       <div className="antsay-commentbox-wrapper">
         <CommentBox
@@ -81,6 +81,7 @@ class AntDComment extends Component {
 AntDComment.propTypes = {
   data: PropTypes.object,
   onComment: PropTypes.func,
+  onDelete: PropTypes.func,
   onDeleteComment: PropTypes.func,
   onTop: PropTypes.func,
   onLike: PropTypes.func,

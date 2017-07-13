@@ -4,7 +4,7 @@ import { Input, Button, Tooltip, Icon, Popconfirm } from 'antd';
 
 import moment from 'moment';
 
-import Textarea from '../Textarea';
+import Textarea from '../Textarea/index';
 import { markdown } from '../util';
 
 import './index.less';
