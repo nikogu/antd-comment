@@ -109,7 +109,7 @@ const App = ()=> <div>
 
 ## DEMO
 
-[demo](/demo/index.html)
+[demo](https://github.com/nikogu/antd-comment/tree/master/demo)
 
 ## Todo
 
