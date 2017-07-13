@@ -32,6 +32,7 @@
     "dora": "^0.4.3",
     "dora-plugin-proxy": "^0.8.5",
     "dora-plugin-webpack": "^0.8.1",
+    "dora-plugin-webpack-hmr": "^0.2.1",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-loader": "^1.6.1",
@@ -50,7 +51,7 @@
     "webpack": "^1.14.0"
   },
   "scripts": {
-    "start": "dora --plugins \"proxy,webpack\"",
+    "start": "dora --plugins \"proxy,webpack,webpack-hmr\"",
     "build": "npm run build:lib && npm run build:umd",
     "build:lib": "./node_modules/.bin/babel src -d lib --copy-files",
     "build:umd": "./node_modules/.bin/webpack ./src/index.jsx dist/index.js --config ./webpack.component.js",

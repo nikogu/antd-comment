@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactDom from 'react-dom';
-import AntdComment from '../src';
-
 import 'moment/locale/zh-cn';
+
+import AntdComment from '../src';
 
 class App extends Component {
   constructor(props) {
