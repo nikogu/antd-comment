@@ -6,7 +6,7 @@ The comment UI component build on ant.design
 
 0.1.0
 
-![img|400](https://gw.alipayobjects.com/zos/rmsportal/rnUQgvYWUJDxhKrRqrdp.png)
+<img width="400" src="https://gw.alipayobjects.com/zos/rmsportal/rnUQgvYWUJDxhKrRqrdp.png" />
 
 ## feature
 
