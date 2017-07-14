@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import Textarea from '../Textarea/index';
+import Textarea from '../Textarea/index.jsx';
 
 import './index.less';
 

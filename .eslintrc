@@ -16,6 +16,7 @@
     "react/jsx-no-target-blank": 0,
     "jsx-a11y/img-has-alt": 0,
     "react/jsx-space-before-closing": 0,
-    "jsx-a11y/no-static-element-interactions": 0
+    "jsx-a11y/no-static-element-interactions": 0,
+    "import/extensions": 0
   }
 }

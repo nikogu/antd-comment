@@ -4,7 +4,7 @@ import { Tooltip, Icon, Popconfirm } from 'antd';
 
 import moment from 'moment';
 
-import Textarea from '../Textarea/index';
+import Textarea from '../Textarea/index.jsx';
 import { markdown } from '../util';
 
 import './index.less';

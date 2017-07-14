@@ -2,8 +2,8 @@ import React, { Component, PropTypes } from 'react';
 
 import shortid from 'shortid';
 
-import CommentBox from './CommentBox/index';
-import Comment from './Comment/index';
+import CommentBox from './CommentBox/index.jsx';
+import Comment from './Comment/index.jsx';
 
 import './index.less';
 
