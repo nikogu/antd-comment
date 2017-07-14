@@ -13,14 +13,14 @@ class App extends Component {
       // 扁平化评论
       data: {
         currentUser: {
-          avatar: "https://gw.alipayobjects.com/zos/rmsportal/MPYlfjPImtaHFPOvpBVo.png",
+          avatar: 'https://gw.alipayobjects.com/zos/rmsportal/MPYlfjPImtaHFPOvpBVo.png',
           name: '梅西',
           link: 'http://say.alipay.net/',
         },
         comments: [
           {
             author: {
-              avatar: "https://gw.alipayobjects.com/zos/rmsportal/oFfmyzshSidtkzZZSgea.jpg",
+              avatar: 'https://gw.alipayobjects.com/zos/rmsportal/oFfmyzshSidtkzZZSgea.jpg',
               name: '科比',
               url: 'http://say.alipay.net/',
             },
@@ -33,7 +33,7 @@ class App extends Component {
           },
           {
             author: {
-              avatar: "https://gw.alipayobjects.com/zos/rmsportal/SJMVsfeiXXnvxvEwgHjy.gif",
+              avatar: 'https://gw.alipayobjects.com/zos/rmsportal/SJMVsfeiXXnvxvEwgHjy.gif',
               name: '罗纳尔多',
               url: 'http://say.alipay.net/',
             },
@@ -45,7 +45,7 @@ class App extends Component {
           },
           {
             author: {
-              avatar: "https://gw.alipayobjects.com/zos/rmsportal/NCRZHCzKeqkcBaKXDPZb.jpg",
+              avatar: 'https://gw.alipayobjects.com/zos/rmsportal/NCRZHCzKeqkcBaKXDPZb.jpg',
               name: '乔丹',
               url: 'http://say.alipay.net/',
             },
@@ -53,12 +53,12 @@ class App extends Component {
             like: [],
             top: 0,
             replyAuthor: {
-              avatar: "https://gw.alipayobjects.com/zos/rmsportal/SJMVsfeiXXnvxvEwgHjy.gif",
+              avatar: 'https://gw.alipayobjects.com/zos/rmsportal/SJMVsfeiXXnvxvEwgHjy.gif',
               name: '罗纳尔多',
               url: 'http://say.alipay.net/',
             },
             createdAt: new Date('2017-06-23'),
-          }
+          },
         ],
         pagination: {
           total: 276,
@@ -66,14 +66,14 @@ class App extends Component {
           pageSize: 20,
         },
         more: true,
-      }
-    }
+      },
+    };
   }
 
-  handleOnComment = (val, reply, callback)=> {
+  handleOnComment = (val, reply, callback) => {
     const newComment = {
       author: {
-        avatar: "https://gw.alipayobjects.com/zos/rmsportal/MPYlfjPImtaHFPOvpBVo.png",
+        avatar: 'https://gw.alipayobjects.com/zos/rmsportal/MPYlfjPImtaHFPOvpBVo.png',
         name: '梅西',
         link: 'http://say.alipay.net/',
       },
@@ -91,23 +91,24 @@ class App extends Component {
       data,
     });
 
-    callback && callback();
+    if (callback) callback();
   }
 
   render() {
-    return <div>
-      <div style={{width: 600, margin: '40px auto'}}>
+    return (
+      <div style={{ width: 600, margin: '40px auto' }}>
         <AntdComment
           data={this.state.data}
           onComment={this.handleOnComment}
-          onDeleteComment={()=>{}}
-          onTop={()=>{}}
-          onLike={()=>{}}
-          onGetMore={()=>{}}
+          onDeleteComment={() => {}}
+          onTop={() => {}}
+          onLike={() => {}}
+          onGetMore={() => {}}
         />
       </div>
-    </div>;
+    );
   }
 }
 
+/* eslint no-undef:0 */
 ReactDom.render(<App />, document.getElementById('root'));

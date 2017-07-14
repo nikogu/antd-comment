@@ -7,6 +7,15 @@
     "class-methods-use-this": 0,
     "react/prefer-es6-class": 0,
     "react/forbid-prop-types": 0,
-    "no-console": 0
+    "no-console": 0,
+    "comma-dangle": 0,
+    "react/no-unused-prop-types": 0,
+    "semi": 0,
+    "no-unused-expressions": 0,
+    "react/jsx-wrap-multilines": 0,
+    "react/jsx-no-target-blank": 0,
+    "jsx-a11y/img-has-alt": 0,
+    "react/jsx-space-before-closing": 0,
+    "jsx-a11y/no-static-element-interactions": 0
   }
 }

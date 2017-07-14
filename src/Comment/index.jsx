@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 
-import { Input, Button, Tooltip, Icon, Popconfirm } from 'antd';
+import { Tooltip, Icon, Popconfirm } from 'antd';
 
 import moment from 'moment';
 
@@ -76,8 +76,8 @@ class Comment extends Component {
               </p>
               :
               <span>
-            {data.author.name}
-          </span>
+                {data.author.name}
+              </span>
           }
           <Tooltip title={moment(new Date(data.createdAt)).format('YYYY/MM/DD hh:mm:ss')}>
             <span className="antsay-comment-meta-time">
@@ -87,22 +87,22 @@ class Comment extends Component {
         </div>
         <div
           className="antsay-comment-content antsay-markdown"
-          dangerouslySetInnerHTML={{__html: markdown(data.body || '')}}
+          dangerouslySetInnerHTML={{ __html: markdown(data.body || '') }}
         />
       </div>
       <div className="antsay-comment-operator-wrapper">
-        <div className={showOperator ? 'antsay-comment-operator-show': 'antsay-comment-operator'}>
-        <span onClick={()=>this.showReplyBox()}>
-          <Icon type="rollback"/>
-          { expandReply ? '取消回复' : '回复'}
-        </span>
+        <div className={showOperator ? 'antsay-comment-operator-show' : 'antsay-comment-operator'}>
+          <span onClick={() => this.showReplyBox()}>
+            <Icon type="rollback"/>
+            { expandReply ? '取消回复' : '回复'}
+          </span>
           {
             auth && !expandReply && <Popconfirm
               title="确定要删除这条评论吗？"
-              onConfirm={()=>this.handleDelete()}
-              onCancel={()=>this.handleOnCancelDelete()}
+              onConfirm={() => this.handleDelete()}
+              onCancel={() => this.handleOnCancelDelete()}
             >
-              <span onClick={()=>this.handleOnClickDelete()}>
+              <span onClick={() => this.handleOnClickDelete()}>
                 <Icon type="delete"/>删除
               </span>
             </Popconfirm>
@@ -110,19 +110,20 @@ class Comment extends Component {
         </div>
       </div>
       <div className={expandReply ? 'antsay-comment-reply-show' : 'antsay-comment-reply'}>
-          <Textarea
-            active={true}
-            textSubmit="回复"
-            placeholder={`回复 ${data.author.name} :`}
-            disableSubmit={disableSubmit}
-            onSubmit={(val)=>this.handleOnSubmit(val)}
-          />
+        <Textarea
+          active
+          textSubmit="回复"
+          placeholder={`回复 ${data.author.name} :`}
+          disableSubmit={disableSubmit}
+          onSubmit={val => this.handleOnSubmit(val)}
+        />
       </div>
     </div>
   }
 }
 
 Comment.propTypes = {
+  currentUser: PropTypes.object,
   data: PropTypes.object,
   onDelete: PropTypes.func,
 };

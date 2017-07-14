@@ -1,7 +1,5 @@
 import React, { Component, PropTypes } from 'react';
 
-import { Input, Button } from 'antd';
-
 import Textarea from '../Textarea/index';
 
 import './index.less';
@@ -24,7 +22,7 @@ class CommentBox extends Component {
     return <div className="antsay-commentbox">
       <div className="antsay-commentbox-header">
         <p>
-          共 {data.pagination.total} 条评论
+          共 { data.pagination.total } 条评论
         </p>
       </div>
       <div className="antsay-commentbox-body">
@@ -38,7 +36,7 @@ class CommentBox extends Component {
             id={id}
             placeholder={(data.pagination && data.pagination.total === 0) && '添加第一条评论'}
             disableSubmit={disableSubmit}
-            onSubmit={(val)=>this.handleOnSubmit(val)}
+            onSubmit={val => this.handleOnSubmit(val)}
           />
         </div>
       </div>
